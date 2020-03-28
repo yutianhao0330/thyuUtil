@@ -36,7 +36,7 @@ public class StringUtilTest {
 		System.out.println(StringUtil.isEmail("thyusjtu@sjtu.edu.cn"));
 	}
 	@Test
-	public void test() {
-		System.out.println(StringUtil.randomString(10000));
+	public void testIsNumber() {
+		System.out.println(StringUtil.isNumber("22.4"));
 	}
 }

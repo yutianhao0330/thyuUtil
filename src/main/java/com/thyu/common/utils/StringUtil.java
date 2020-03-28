@@ -3,8 +3,6 @@ package com.thyu.common.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.naming.NoInitialContextException;
-
 import com.thyu.common.utils.RandomUtil;
 
 /**
@@ -137,6 +135,21 @@ public class StringUtil {
 	 */
 	public static boolean isAllCases(String str) {
 		String regex ="[a-zA-Z]?";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	/**
+	 * 
+	    * @Title: isNumber
+	    * @Description: 验证是否为数字
+	    * @param @param str
+	    * @param @return    参数
+	    * @return boolea    返回类型
+	    * @throws
+	 */
+	public static boolean isNumber(String str) {
+		String regex ="-?\\d+(\\.\\d+)?";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(str);
 		return m.matches();
