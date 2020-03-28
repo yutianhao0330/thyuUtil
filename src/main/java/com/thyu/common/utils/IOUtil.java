@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -98,21 +100,24 @@ public class IOUtil {
 	    * @Title: readFileByLine
 	    * @Description: 按行读取文本文件，默认为utf8
 	    * @param @param file    参数
-	    * @return void    返回类型
+	    * @return List<String>    返回各行的文本数据
 	    * @throws
 	 */
-	public static void readFileByLine(File file) {
-		readFileByLine(file, "utf8");
+	public static List<String> readFileByLine(File file) {
+		return readFileByLine(file, "utf8");
 	}
 	/**
 	 * 
 	    * @Title: readFileByLine
 	    * @Description: 按指定的编码集，按行读取文本文件
-	    * @param @param fileName    参数
-	    * @return void    返回类型
+	    * @param @param file
+	    * @param @param charset
+	    * @param @return    参数
+	    * @return List<String>    返回各行的文本数据
 	    * @throws
 	 */
-	public static void readFileByLine(File file,String charset) {
+	public static List<String> readFileByLine(File file,String charset) {
+		List<String> content = new LinkedList<String>();
 		InputStream in = null;
 		Reader reader = null;
 		BufferedReader bufferedReader = null;
@@ -123,6 +128,7 @@ public class IOUtil {
 			String line = null;
 			while ((line = bufferedReader.readLine()) != null) {
 				System.out.println(line);
+				content.add(line);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -133,6 +139,7 @@ public class IOUtil {
 		} finally {
 			close(bufferedReader,reader,in);
 		}
+		return content;
 	}
 	/**
 	 * 
