@@ -2,6 +2,9 @@ package com.thyu.common.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.naming.NoInitialContextException;
+
 import com.thyu.common.utils.RandomUtil;
 
 /**
@@ -181,6 +184,23 @@ public class StringUtil {
 	public static String randomEnglishString(int length) {
 		StringBuffer buffer = new StringBuffer();
 		String str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+		for (int i = 0; i < length; i++) {
+			buffer.append(str.charAt(RandomUtil.random(0, str.length()-1)));
+		}
+		return buffer.toString();
+	}
+	/**
+	 * 
+	    * @Title: randomNumberString
+	    * @Description: 随机获取数字组成的字符串
+	    * @param @param length
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	public static String randomNumberString(int length) {
+		StringBuffer buffer = new StringBuffer();
+		String str = "0123456789";
 		for (int i = 0; i < length; i++) {
 			buffer.append(str.charAt(RandomUtil.random(0, str.length()-1)));
 		}
