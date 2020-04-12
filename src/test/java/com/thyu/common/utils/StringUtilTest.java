@@ -39,4 +39,8 @@ public class StringUtilTest {
 	public void testIsNumber() {
 		System.out.println(StringUtil.isNumber("22.4"));
 	}
+	@Test
+	public void testIsHttpUrl() {
+		System.out.println(StringUtil.isHttpUrl("http://baidu.com"));
+	}
 }

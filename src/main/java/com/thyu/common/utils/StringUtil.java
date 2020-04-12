@@ -1,5 +1,7 @@
 package com.thyu.common.utils;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -218,5 +220,19 @@ public class StringUtil {
 			buffer.append(str.charAt(RandomUtil.random(0, str.length()-1)));
 		}
 		return buffer.toString();
+	}
+	/**
+	 * 功能说明：实现判断传入的字符串是否为包含http的url地址
+	 */
+	public static boolean isHttpUrl(String src){
+		try {
+			URL url = new URL(src);
+			url.openStream();
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
